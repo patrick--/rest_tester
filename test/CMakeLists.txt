@@ -13,9 +13,9 @@ add_executable(
         ../external/catch2/catch.hpp
         ../external/json11/json11.cpp ../external/json11/json11.hpp
         ../src/handlers.cpp ../src/handlers.h
-        ../src/http_utility.cpp ../src/json_utility.cpp
+        ../src/http_utility.cpp ../src/http_utility.cpp
         ../src/json_utility.h
         ../src/server_manager.cpp ../src/server_manager.h
-
-
 )
+
+target_link_libraries(TestAll pthread)
