@@ -1,6 +1,3 @@
 
 
-class json_utility {
-
-};
-
+class json_utility {};
