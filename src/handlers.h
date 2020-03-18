@@ -4,7 +4,8 @@
 
 namespace handlers {
 
-    void hello_world(const httplib::Request& req, httplib::Response& res);
-
+    void hello_world(const httplib::Request&, httplib::Response&);
+    void echo(const httplib::Request&, httplib::Response&);
+    void http_response(const httplib::Request&, httplib::Response&);
 
 }

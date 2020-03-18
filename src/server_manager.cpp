@@ -8,12 +8,16 @@ ServerManager::ServerManager(std::string host, int port): port_(port), host_(hos
     }
 }
 
+ServerManager::~ServerManager() {
+    server_.stop();
+}
+
 void ServerManager::start()
 {
     server_.listen(host_.c_str(), port_);
-    if (server_.is_running()) {
-        throw std::runtime_error("Unable to start HTTP server");
-    }
+    //if (!server_.is_running()) {
+    //    throw std::runtime_error("Unable to start HTTP server");
+    //}
 }
 
 void ServerManager::add_handler(const HttpMethod method, const std::string& route, httplib::Server::Handler h)
