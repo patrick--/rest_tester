@@ -21,20 +21,19 @@ TEST_CASE("Testing basic GET handlers") {
     REQUIRE(resp.body == "Hello World");
   }
 
-  SECTION("Testing return_http_response handler") {
+  SECTION("Testing get_http_response handler") {
     req.method = "GET";
-    req.path = "/http_response";
-    req.params.insert(std::make_pair("http_resp_code","200"));
+    req.path = "/get_http_response";
+    req.params.insert(std::make_pair("http_resp_code", "200"));
 
-    handlers::http_response(req, resp);
+    handlers::get_http_response(req, resp);
     REQUIRE(resp.status == 200);
 
-    //Passing an invalid status code should return default of 500
+    // Passing an invalid status code should return default of 500
     req.params.clear();
-    req.params.insert(std::make_pair("http_resp_code","666"));
+    req.params.insert(std::make_pair("http_resp_code", "666"));
 
-    handlers::http_response(req, resp);
+    handlers::get_http_response(req, resp);
     REQUIRE(resp.status == 500);
   }
-
 }
