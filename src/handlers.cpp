@@ -1,12 +1,25 @@
-
 #include "handlers.h"
+
 namespace handlers {
 void hello_world(const httplib::Request &req, httplib::Response &res) {
   res.status = 200;
   res.set_content("Hello World", "text/plain");
 }
 
-void echo(const httplib::Request &req, httplib::Response &res) {}
+void echo(const httplib::Request &req, httplib::Response &res) {
+  json11::Json test =
+      json11::Json::object{{"method", req.method},
+                           {"path", req.path},
+                           {"headers", json11::Json::array{req.headers}[0]},
+                           {"body", req.body},
+                           {"version", req.version},
+                           {"target", req.target},
+                           {"params", json11::Json::array{req.params}[0]}
+
+      };
+  res.status = 200;
+  res.set_content(test.dump(), "application/json");
+}
 
 void get_http_response(const httplib::Request &req, httplib::Response &res) {
   int resp_code = 500;
