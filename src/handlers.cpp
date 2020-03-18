@@ -1,8 +1,9 @@
 
 #include "handlers.h"
-
+#include <iostream>
 namespace handlers {
 void hello_world(const httplib::Request &req, httplib::Response &res) {
+  res.status = 200;
   res.set_content("Hello World", "text/plain");
 }
 
